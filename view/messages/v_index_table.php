@@ -2,7 +2,7 @@
 
 <h1> Table </h1>
 <a href='index.php'>Отобразить как список сообщений</a>
-<table>
+<table class="table">
     <? foreach ($messages as $message): ?>
         <tr>
             <td tr style='border:1px solid black'>

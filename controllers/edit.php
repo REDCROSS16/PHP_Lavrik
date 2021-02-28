@@ -6,13 +6,21 @@ include_once('core/arr.php');
 $strId = $_GET['id'] ?? ''; #получаем айди с гет запроса (тот что вверху)
 $id = (int)$strId;
 $message = messageOne($id);
-$title = 'EDIT MESSAGE';
+$pageTitle = 'EDIT';
 
 
 if (isset($_POST['update'])) {
     $fields = extractFields($_POST, ['name', 'text']);
-    updateMessage($id, $fields);
-    header('Location: index.php');
-}
+    if (updateMessage($id, $fields))  {
+        header('Location: index.php');
+    } else {
+        echo 'error';
+    }
+    
+} 
 
-include('view/v_edit.php');  
+
+$pageContent = template('messages/v_edit', [
+    'message' => $message,
+]);
+

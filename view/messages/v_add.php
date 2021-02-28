@@ -1,7 +1,7 @@
 
 
 <div class="form">
-		<a href="index.php">Вернуться на главную</a>
+		
 		<form method="post">
 			Name:<br>
 			<input type="text" name="name" value="<?=$fields['name']?>"><br>
@@ -13,6 +13,7 @@
 				<p><?=$error?></p>
 			<? endforeach; ?>
 			</div>
+			<a href="index.php">Вернуться на главную</a>
 		</form>
 </div>
 

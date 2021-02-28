@@ -10,14 +10,19 @@ $message = messageOne($id); #с БД получаем инфу о месадже
 $hasMessage = $message!==false;
 
 if ($hasMessage) {
-    $pageTitle = $message['name'];
-    $pageContent = template('v_message', [
+    
+    $content = template('messages/v_messages_main', [
         'message' => $message,
     ]);
-    // include('view/v_message.php');
-    
+
+    $pageTitle = $message['name'];
+
+    $pageContent = template('base/v_con2col', [
+        'left' => template('messages/v_messages_left'),
+        'content' => $content,
+        'title' => 'One message',
+    ]);
 } else {
     header('HTTP/1.1 404 not found'); #отправляет заголовок
-    // include('view/errors/v_404.php');
     $pageContent = template('errors/v_404');
 }

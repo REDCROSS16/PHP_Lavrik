@@ -1,0 +1,17 @@
+.container {
+    margin-left: 2em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-header {
+    background-color: rgb(189, 198, 247);
+}
+
+.message {
+    border: 1px solid #000;
+    margin: 10px;
+    padding: 10px;
+}

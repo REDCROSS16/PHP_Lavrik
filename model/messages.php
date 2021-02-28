@@ -15,7 +15,12 @@ function messageOne(int $id)  {
     $query = dbQuery($sql, ['id' => $id]);
     return $query->fetch();
 }
-
+/**
+ * Функция обновления сообщения 
+ * @param int $id - айди сообщения
+ * @param array $fields - поля с текстом сообщения
+ * @return bool выполнился апдейт или нет
+ */
 function updateMessage(int $id, array $fields) : bool {
     $sql = "UPDATE messages SET name= :name, text = :text WHERE id_message=" . $id;
     dbQuery($sql, $fields);

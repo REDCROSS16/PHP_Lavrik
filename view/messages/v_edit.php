@@ -11,7 +11,7 @@
 
 			<textarea type="text" name="text"><?=$message['text'];?></textarea><br>
 
-			<input type='submit' name='update' value='Update' ></input>
+			<input type='submit' name='update' value='Update' class="btn btn-primary"></input>
 	
         </form>
         <a href="index.php">Вернуться на главную</a>
