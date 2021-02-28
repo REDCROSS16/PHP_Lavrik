@@ -1,8 +1,5 @@
 <?php
 
-include_once('model/messages.php');
-include_once('core/arr.php');
-
 $strId = $_GET['id'] ?? ''; #получаем айди с гет запроса (тот что вверху)
 $id = (int)$strId;
 $message = messageOne($id);
@@ -18,7 +15,6 @@ if (isset($_POST['update'])) {
     }
     
 } 
-
 
 $pageContent = template('messages/v_edit', [
     'message' => $message,

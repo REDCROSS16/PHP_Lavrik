@@ -1,10 +1,8 @@
 <?php
-// единая точка входа
+/**  единая точка входа */
 
-include_once('core/arr.php');
-include_once('core/system.php');
-
-
+// подключием инит конфиг + константы
+include_once('init.php');
 
 $cname = $_GET['c'] ?? 'index';
 // путь для единой точки входа

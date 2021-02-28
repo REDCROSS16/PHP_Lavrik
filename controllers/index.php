@@ -1,6 +1,5 @@
 <?php
 
-include_once('model/messages.php'); #подключается модель сообщения, все функции из модели\
 $pageTitle = 'Главная страница';
 
 $db = dbConnect(); #подключаемся к базе
