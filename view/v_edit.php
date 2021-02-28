@@ -1,3 +1,5 @@
+
+
 <div>Страница редактирования сообщения от <strong><?=$message['name'];?></strong></div>
 		
 		<form method="POST" >
@@ -14,3 +16,4 @@
         </form>
         <a href="index.php">Вернуться на главную</a>
 </div>
+

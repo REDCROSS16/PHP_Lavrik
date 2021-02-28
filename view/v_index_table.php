@@ -1,3 +1,5 @@
+
+
 <h1> Table </h1>
 <a href='index.php'>Отобразить как список сообщений</a>
 <table>
@@ -11,3 +13,4 @@
         </tr>    
     <? endforeach;?>
 </table>
+

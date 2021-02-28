@@ -2,17 +2,26 @@
 // единая точка входа
 
 include_once('core/arr.php');
+include_once('core/system.php');
+
+
 
 $cname = $_GET['c'] ?? 'index';
 // путь для единой точки входа
 $path = "controllers/$cname.php";
+$title = 'Ошибка 404';
+$content = '';
 
-if (file_exists($path) && checkCname($cname)) {
+if (file_exists($path) && checkControllerName($cname)) {
     include_once($path);
 } else {
-    $cname = 404;
-    include_once('view/errors/v_404.php');
+    $content = template('errors/v_404');
 }
-    
+
+$html = template('base/v_main', [
+    'title' => $pageTitle,
+    'content' => $pageContent,
+]);
 
 
+echo $html;
