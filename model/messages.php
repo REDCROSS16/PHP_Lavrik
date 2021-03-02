@@ -65,3 +65,13 @@ function messagesValidate (array &$fields) : array  {
 //     $query = "UPDATE posts SET title='" . $title . "', url='" . $url . "', cid=" . $cid . ", description='". $description."', file='" . $file . "' WHERE id='" . $id ."'";
 //     return execQuery($query);
 // }
+/**
+ * Добавить тег в БД
+ */
+function addTags(int $id) {
+        
+}
+
+function getTagsFromDb(int $id) : array {
+
+}
