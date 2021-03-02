@@ -5,13 +5,12 @@ $pageTitle = 'Add Tag';
 
 $res = '';
 
-// $tags = '#' . 'asdad asdasdas';
-// foreach ($tags as $tag) {
-//     $res .= '#' . $tag;
-// }
 
-
-
+$result = getTagsFromDb();
+foreach ($result as $tag) {
+    $res .= '[ <a href="#">' . '#'. $tag['name'] .  '</a>' . ' ] ';
+}
+$tags = $res;
 
 $content = template('messages/v_add_tag', [
     'tags' => $tags,
@@ -23,9 +22,13 @@ $pageContent = template('base/v_con2col', [
     'title' => 'One message',
 ]);
 
+if (isset($_POST['tag'])) {
+    if (addTags($_POST['tag'])) {
+        header('Location: index.php?c=tag&id=' . $id);  
+    }
+
+}
 
 
 
-
-
-// $tags = getTagsFromDb($id);
+var_dump($res);

@@ -13,7 +13,6 @@ if (isset($_POST['update'])) {
     } else {
         echo 'error';
     }
-    
 } 
 
 $pageContent = template('messages/v_edit', [

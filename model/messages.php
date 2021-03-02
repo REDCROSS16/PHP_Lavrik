@@ -61,17 +61,19 @@ function messagesValidate (array &$fields) : array  {
 
 }
 
-// function updateArticle($id, $title, $url, $description, $cid, $file) {
-//     $query = "UPDATE posts SET title='" . $title . "', url='" . $url . "', cid=" . $cid . ", description='". $description."', file='" . $file . "' WHERE id='" . $id ."'";
-//     return execQuery($query);
-// }
 /**
  * Добавить тег в БД
  */
-function addTags(int $id) {
-        
+function addTags(string $name) {
+    $sql = "INSERT tag (name) VALUES ('$name')";    
+    dbQuery($sql);
+    return true;
 }
 
-function getTagsFromDb(int $id) : array {
-
+/**
+ * Получить теги по данному сообщению
+ */
+function getTagsFromDb() : array {
+    $sql = 'SELECT * FROM tag';
+    return dbQuery($sql)->fetchAll();
 }
