@@ -12,4 +12,7 @@ $pageContent = template("messages/$template", [
     'messages' => $messages,
 ]);
 
+
+// $myCar = new Car;
+// var_dump($myCar);
 ?>
