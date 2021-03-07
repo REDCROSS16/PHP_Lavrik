@@ -8,6 +8,13 @@ $message = messageOne($id); #с БД получаем инфу о месадже
 $hasMessage = $message!==false;
 // $tag = getTag($id); #написать функцию
 
+$tags = '';
+$tagsById = getTagsFromPageId($id);
+foreach ($tagsById as $tag) {
+    $tags .= '[ <a href="#">' . '#'. $tag['tag_name'] .  '</a>' . ' ] ';
+}
+
+
 if ($hasMessage) {
     
     $content = template('messages/v_messages_main', [
@@ -19,7 +26,7 @@ if ($hasMessage) {
     $pageContent = template('base/v_con2col', [
         'left' => template('messages/v_messages_left'),
         'content' => $content,
-        'title' => 'One message',
+        'title' => $pageTitle,
         'tag' => $tag,
     ]);
 } else {

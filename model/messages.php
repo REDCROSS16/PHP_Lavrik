@@ -64,10 +64,22 @@ function messagesValidate (array &$fields) : array  {
 /**
  * Добавить тег в БД
  */
-function addTags(string $name) {
-    $sql = "INSERT tag (name) VALUES ('$name')";    
+function addTags(string $name, int $page_id) {
+    $allTags = getTagsFromDb();
+    // из всех тегов ищет тег
+    foreach ($allTags as $tag) {
+        // если тег есть
+        if (!in_array($name, $tag)) {
+            $sql = "INSERT tag (tag_name) VALUES ('$name')";  
+        }
+    }
+    dbQuery($sql);
+    
+    $tagId = getTagIdByName($name);
+    $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')'; 
     dbQuery($sql);
     return true;
+    
 }
 
 /**
@@ -76,4 +88,16 @@ function addTags(string $name) {
 function getTagsFromDb() : array {
     $sql = 'SELECT * FROM tag';
     return dbQuery($sql)->fetchAll();
+}
+
+
+function getTagsFromPageId(int $page_id) {
+    $sql = 'SELECT * FROM tag JOIN messages_tag ON tag.tag_id=messages_tag.tag_id WHERE messages_tag.message_id=' . $page_id;
+    return dbQuery($sql)->fetchAll();
+}
+
+
+function getTagIdByName (string $tag_name) {
+    $sql = 'SELECT tag_id FROM tag WHERE tag_name="' . $tag_name . '"';
+    return dbQuery($sql)->fetch();
 }

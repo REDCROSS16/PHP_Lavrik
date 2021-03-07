@@ -4,5 +4,4 @@
         <input type="text" name='tag'>
         <input type="submit" value='добавить тег'>
     </form>
-    <div><?=$res?></div>
 </div>  
