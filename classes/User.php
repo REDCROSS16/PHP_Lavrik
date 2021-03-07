@@ -20,28 +20,41 @@ class User
     }
 
     public function setAge ($age) {
-        if ($age > 18) {
+        if ($this->isAgeCorrect($age)) {
             $this->age = $age;
+        }
+    }
+
+    public function addAge($years) {
+        $newAge = $this->age + $years;
+        if ($this->isAgeCorrect($newAge)) {
+            $this->age = $newAge;
+        }
+    }
+
+    public function isAgeCorrect($age) {
+        return $age >= 18 && $age <= 60;
+    }
+
+    public function subAge($years) {
+        $newAge = $this->age - $years;
+        if ($this->isAgeCorrect($newAge)) {
+            $this->age = $newAge;
         }
     }
 
 }
 
 $sanya = new User;
-
 $vasya = new User;
-
-$sanya->setName('Sanya');
-$vasya->setName('Vasya');
 
 $sanya->setAge(28);
 $vasya->setAge(30);
 
 $user = new User;
 $user->setName('Коля');
-$user->setAge(25);
-
-// echo $user->name . ' ' . $user->age;
+$user->setAge(20);
+$user->addAge(30);
 
 ?>
 
@@ -49,3 +62,4 @@ $user->setAge(25);
 <h1>Тестирую классы и учу ООП</h1>
 
 <p><?=$user->name . ' ' . $user->age;?></p>
+<p></p>
