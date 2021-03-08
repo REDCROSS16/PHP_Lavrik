@@ -65,26 +65,43 @@ function messagesValidate (array &$fields) : array  {
  * Добавить тег в БД
  */
 function addTags(string $name, int $page_id) {
-    $allTags = getTagsFromDb();
-    // из всех тегов ищет тег
-    foreach ($allTags as $tag) {
-        // если тег есть
-        if (!in_array($name, $tag)) {
-            $sql = "INSERT tag (tag_name) VALUES ('$name')";  
-        }
+    if (preg_match('/^[aA-zZ0-9_-]+$/', $name) != 1) {
+        // var_dump('НЕВЕРНОЕ ИМЯ');
+        return false;
     }
-    dbQuery($sql);
-    
-    $tagId = getTagIdByName($name);
-    var_dump($tagId);
-    $messageId = $page_id;
-    
-    if (tagsValidate($messageId, $tagId)) {
-        $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')';
+
+    $allTags = getTagsFromDb();
+
+    if ($allTags == null) {
+        $sql = "INSERT tag (tag_name) VALUES ('$name')";
+        dbQuery($sql);
+    } else {
+        foreach ($allTags as $item) {
+            if ($item['tag_name'] == $name) {
+                $err = 'такой тег уже существует';
+                return false;
+            } else {
+                $sql = "INSERT tag (tag_name) VALUES ('$name')";
+            }   
+                
+        }
         dbQuery($sql);
     }
+    addTagToMessagesTag($name, $page_id);
     return true;
+}
     
+// TODO:ПОТОМ ДОРАБОТАТЬ А ТО УЖЕ ДОСТАЛ
+function addTagToMessagesTag($name, $page_id) {
+    $tagId = getTagIdByName($name);
+    
+        if (tagsValidate($page_id, $tagId)) {
+            $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')';
+            var_dump(23);
+            var_dump($sql);
+            dbQuery($sql);
+        }
+        return true;
 }
 
 /**
