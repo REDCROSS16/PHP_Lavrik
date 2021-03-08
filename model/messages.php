@@ -94,15 +94,34 @@ function addTags(string $name, int $page_id) {
 // TODO:ПОТОМ ДОРАБОТАТЬ А ТО УЖЕ ДОСТАЛ
 function addTagToMessagesTag($name, $page_id) {
     $tagId = getTagIdByName($name);
-    
         if (tagsValidate($page_id, $tagId)) {
             $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')';
-            var_dump(23);
-            var_dump($sql);
             dbQuery($sql);
+            return true;
+        } else {
+            return false;
         }
-        return true;
+        
 }
+
+/**
+ * Проверка тегов 
+ * (чтобы убрать дубликаты)
+ */
+function tagsValidate (int $messageId, int $tagId) {
+    $sql = 'SELECT message_id, tag_id FROM messages_tag';
+    $result = dbQuery($sql)->fetchAll();
+    foreach ($result as $item) {
+        if ($item['message_id'] == $messageId && $item['tag_id'] == $tagId) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+
+
 
 /**
  * Получить теги по данному сообщению
@@ -124,18 +143,3 @@ function getTagIdByName (string $tag_name) {
     return dbQuery($sql)->fetch()['tag_id'];
 }
 
-/**
- * Проверка тегов 
- * (чтобы убрать дубликаты)
- */
-function tagsValidate (int $messageId, int $tagId) {
-    $sql = 'SELECT message_id, tag_id FROM messages_tag';
-    $result = dbQuery($sql)->fetchAll();
-    foreach ($result as $item) {
-        if ($item['message_id'] == $messageId && $item['tag_id'] == $tagId) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
