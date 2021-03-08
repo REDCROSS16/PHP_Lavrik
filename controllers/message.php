@@ -27,7 +27,7 @@ if ($hasMessage) {
         'left' => template('messages/v_messages_left'),
         'content' => $content,
         'title' => $pageTitle,
-        'tag' => $tag,
+        'tag' => $tags,
     ]);
 } else {
     header('HTTP/1.1 404 not found'); #отправляет заголовок

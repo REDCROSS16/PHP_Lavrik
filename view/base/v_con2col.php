@@ -6,7 +6,7 @@
 
     <main class='col col-9 col-md-9'>
         <h1> <?=$title?></h1>
-        <h2><?=$tag?></h2>
+        <h2 style='font-size:10px'><?=$tag?></h2>
 		<hr>
         <?=$content?>
     </main>

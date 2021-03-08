@@ -76,8 +76,13 @@ function addTags(string $name, int $page_id) {
     dbQuery($sql);
     
     $tagId = getTagIdByName($name);
-    $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')'; 
-    dbQuery($sql);
+    var_dump($tagId);
+    $messageId = $page_id;
+    
+    if (tagsValidate($messageId, $tagId)) {
+        $sql = 'INSERT messages_tag (message_id, tag_id) VALUES (' . $page_id . ',' . $tagId['tag_id'] . ')';
+        dbQuery($sql);
+    }
     return true;
     
 }
@@ -99,5 +104,21 @@ function getTagsFromPageId(int $page_id) {
 
 function getTagIdByName (string $tag_name) {
     $sql = 'SELECT tag_id FROM tag WHERE tag_name="' . $tag_name . '"';
-    return dbQuery($sql)->fetch();
+    return dbQuery($sql)->fetch()['tag_id'];
+}
+
+/**
+ * Проверка тегов 
+ * (чтобы убрать дубликаты)
+ */
+function tagsValidate (int $messageId, int $tagId) {
+    $sql = 'SELECT message_id, tag_id FROM messages_tag';
+    $result = dbQuery($sql)->fetchAll();
+    foreach ($result as $item) {
+        if ($item['message_id'] == $messageId && $item['tag_id'] == $tagId) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
