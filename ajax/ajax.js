@@ -131,3 +131,68 @@ btex3.addEventListener('click', ()=> {
 	);
 });
 
+let btex4 = document.querySelector('#btex4');
+let ex4 = document.querySelector('#ex4');
+
+btex4.addEventListener('click', ()=> {
+
+	let promise = fetch('les/timeNow.php');
+	promise.then(
+		response => {
+			return response.text();
+		}
+	).then (
+		text => {
+			ex4.innerHTML = text;
+		}
+	)	
+})
+
+/**
+ * Дана кнопка, список ul и страница /ajax/, которая возвращает текущее время. Сделайте так, чтобы по нажатию на кнопку с сервера загружалось содержимое страницы /ajax/ и добавлялось в новый тег li тега ul. 
+ */
+
+let btex5 = document.querySelector('#btex5');
+let ul5 = document.querySelector('#ul-5');
+
+btex5.addEventListener('click', ()=> {
+	let promise = fetch('les/timeNow.php');
+	let li = document.createElement('li');
+
+	promise.then(
+		response => {
+			return response.text();
+		}
+	).then(
+		text => {
+			li.innerHTML = text;
+		}
+	)
+
+	ul5.appendChild(li);
+
+})
+
+/**
+ * Модифицируйте предыдущую задачу так, чтобы вместо кнопки работал таймер, 
+ * который каждые 2 секунды будет опрашивать страницу /ajax/ и добавлять 
+ * результат в новый тег li тега ul. 
+ */
+
+let ul6 = document.querySelector('#ul-6');
+
+setInterval(()=> {
+	let promise = fetch('les/timeNow.php');
+	let li = document.createElement('li');
+	promise.then(
+		response => {
+			return response.text();
+		}
+	).then (
+		text => {
+			li.innerHTML = text;
+		}
+	)
+
+	// ul6.appendChild(li);
+}, 1000);
