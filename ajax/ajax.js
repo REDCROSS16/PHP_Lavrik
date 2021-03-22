@@ -3,7 +3,7 @@ let button = document.getElementById('button');
 let result = document.getElementById('result');
 
 button.addEventListener('click', function () {
-    let promise = fetch('ajax.php');
+    let promise = fetch('les/ajax.php');
 
 	promise.then(
 		response => {
@@ -182,6 +182,7 @@ btex5.addEventListener('click', ()=> {
 let ul6 = document.querySelector('#ul-6');
 
 setInterval(()=> {
+
 	let promise = fetch('les/timeNow.php');
 	let li = document.createElement('li');
 	promise.then(
@@ -193,6 +194,5 @@ setInterval(()=> {
 			li.innerHTML = text;
 		}
 	)
-
-	// ul6.appendChild(li);
-}, 1000);
+	ul6.appendChild(li);
+}, 10000);

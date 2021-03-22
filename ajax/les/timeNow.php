@@ -6,7 +6,4 @@ function getTime() {
 }
 ?>
 
-
-
-<p>Текущее время:</p>
-<p><?=getTime();?></p>
+<p>Текущее время: <?=getTime();?></p>
