@@ -1,6 +1,5 @@
 <?php
 
-
 class User
 {
     public $name;
@@ -32,15 +31,17 @@ class User
         }
     }
 
-    public function isAgeCorrect($age) {
-        return $age >= 18 && $age <= 60;
-    }
+    
 
     public function subAge($years) {
         $newAge = $this->age - $years;
         if ($this->isAgeCorrect($newAge)) {
             $this->age = $newAge;
         }
+    }
+
+    private function isAgeCorrect($age) {
+        return $age >= 18 && $age <= 60;
     }
 
 }
