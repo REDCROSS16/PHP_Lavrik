@@ -49,48 +49,39 @@ class Employee
     }
 }
 
-$worker1 = new Employee;
-$worker2 = new Employee;
+// $worker1 = new Employee;
+// $worker2 = new Employee;
 
-$worker1->age = 17;
-$worker2->age = 30;
+// $worker1->age = 17;
+// $worker2->age = 30;
 
-$worker1->salary = 3000;
-$worker2->salary = 5000;
+// $worker1->salary = 3000;
+// $worker2->salary = 5000;
 
-$worker1->name = 'RED';
-$worker2->name = 'Cross';
-
-
-
-echo ($worker1->checkAge());
-
-$worker1->setName('Alexander');
-$worker2->setName('Vladimir');
+// $worker1->name = 'RED';
+// $worker2->name = 'Cross';
 
 
-$vasya = new Employee('Vasya', 28, 3000);
-$petya = 
+
+// echo ($worker1->checkAge());
+
+// $worker1->setName('Alexander');
+// $worker2->setName('Vladimir');
+
+
+$vasya = new Employee('Vasya', 25, 1000);
+$petya = new Employee('Petya', 30, 2000);
+?>
+<h4>Совместная зп: <?=$vasya->salary + $petya->salary;?></h4> 
+
+
+<?php 
+
+$vasya->setName('Коля');
+
+
 ?>
 
-<table style='border:solid 1px black'>
-        <td> <?=$worker1->name;?> </td>
-        <td> <?=$worker2->name;?> </td>
-        <td> Сумма</td>
-    </tr>
-    <tr>
-        <td> <?=$worker1->age;?></td>
-        <td> <?=$worker2->age;?></td>
-    </tr>
-    <tr>
-        <td><?=$worker1->getSalary();?></td>
-        <td><?=$worker2->getSalary();?></td>
-        <td><?=$worker2->getSalary()+$worker1->getSalary();?></td>
-    </tr>
-    <tr>
-        <td><?=$worker1->doubleSalary()?></td>
-        <td><?=$worker2->doubleSalary()?></td>
-    </tr>
 
-
-</table>
+<p> <?=$vasya->name;?></p>
+<p>и его зарплата: <?=$vasya->getSalary();?></p>
