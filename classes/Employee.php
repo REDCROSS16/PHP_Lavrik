@@ -11,6 +11,12 @@ class Employee
     public $age;
     public $salary;
 
+    function __construct ($name, $age, $salary) {
+        $this->name = $name;
+        $this->age = $age;
+        $this->salary = $salary;
+    }
+
     public function getName() {
         $name = $this->name;
         return $name;
@@ -61,6 +67,10 @@ echo ($worker1->checkAge());
 
 $worker1->setName('Alexander');
 $worker2->setName('Vladimir');
+
+
+$vasya = new Employee('Vasya', 28, 3000);
+$petya = 
 ?>
 
 <table style='border:solid 1px black'>
