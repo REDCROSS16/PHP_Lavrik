@@ -7,9 +7,9 @@
 
 class Employee 
 {
-    public $name;
-    public $age;
-    public $salary;
+    private $name;
+    private $age;
+    private $salary;
 
     function __construct ($name, $age, $salary) {
         $this->name = $name;
@@ -29,7 +29,7 @@ class Employee
 
     public function getSalary() {
         $salary = $this->salary;
-        return $salary;
+        return $salary . '$';
     }
 
     public function checkAge () {
@@ -42,46 +42,20 @@ class Employee
     public function setName ($name) {
         $this->name = $name;
     }
+    public function setAge($age) {
+        if ($this->isAgeCorrect($age))
+        $this->age = $age;
+    }
+    public function setSalary($salary) {
+        $this->salary = $salary;
+    }
 
     public function doubleSalary () {
         $dblSalary = $this->getSalary() * 2;
         return $dblSalary;
     }
+    
+    private function isAgeCorrect($age) {
+        return $age > 20 && $age < 100;
+    }
 }
-
-// $worker1 = new Employee;
-// $worker2 = new Employee;
-
-// $worker1->age = 17;
-// $worker2->age = 30;
-
-// $worker1->salary = 3000;
-// $worker2->salary = 5000;
-
-// $worker1->name = 'RED';
-// $worker2->name = 'Cross';
-
-
-
-// echo ($worker1->checkAge());
-
-// $worker1->setName('Alexander');
-// $worker2->setName('Vladimir');
-
-
-$vasya = new Employee('Vasya', 25, 1000);
-$petya = new Employee('Petya', 30, 2000);
-?>
-<h4>Совместная зп: <?=$vasya->salary + $petya->salary;?></h4> 
-
-
-<?php 
-
-$vasya->setName('Коля');
-
-
-?>
-
-
-<p> <?=$vasya->name;?></p>
-<p>и его зарплата: <?=$vasya->getSalary();?></p>

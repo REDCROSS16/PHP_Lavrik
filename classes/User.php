@@ -3,7 +3,7 @@
 class User
 {
     public $name;
-    public $age;
+    private $age;
 
     public function show($str = 'nothing') {
         $rand = mt_rand(0, 100);
@@ -44,23 +44,10 @@ class User
         return $age >= 18 && $age <= 60;
     }
 
+    public function getAge() {
+        return $this->age;
+    }
+    
 }
 
-$sanya = new User;
-$vasya = new User;
-
-$sanya->setAge(28);
-$vasya->setAge(30);
-
-$user = new User;
-$user->setName('Коля');
-$user->setAge(20);
-$user->addAge(30);
-
 ?>
-
-
-<h1>Тестирую классы и учу ООП</h1>
-
-<p><?=$user->name . ' ' . $user->age;?></p>
-<p></p>
