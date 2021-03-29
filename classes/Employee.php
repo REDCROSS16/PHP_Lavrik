@@ -1,5 +1,4 @@
-<?
-
+<?php
 
 /**
  * Класс работника
@@ -10,6 +9,8 @@ class Employee
     private $name;
     private $age;
     private $salary;
+    private $surname;
+    private $patronymic;
 
     function __construct ($name, $age, $salary) {
         $this->name = $name;
@@ -59,3 +60,5 @@ class Employee
         return $age > 20 && $age < 100;
     }
 }
+
+?>

@@ -5,6 +5,12 @@ class User
     public $name;
     private $age;
 
+    function __construct($name, $age)
+    {
+        $this->name = $name;
+        $this->age = $age;
+    }
+
     public function show($str = 'nothing') {
         $rand = mt_rand(0, 100);
         return 'YOU WON ' . $str . ' ' . $rand . '<br>';
