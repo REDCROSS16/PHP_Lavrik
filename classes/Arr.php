@@ -12,10 +12,28 @@ class Arr
         return $this->numbers;
     }
 
+    public function getAvg (array $nums) {
+        $count = count($nums);
+        $sum = 0;
+        foreach ($nums as $num) {
+            if (is_numeric($num)) {
+                $sum += $num;
+            }
+        }
+        $ariphmetic = $sum / $count;
+
+        return "Среднее арифмитическое чисел : $ariphmetic";
+    }
 
 }
 
 
 $out = new Arr;
 
-$out->add([1,2,3,4,5]);
+$array = [1,2,3,4,5, 50];
+echo '<pre>';
+$out->add($array);
+echo '</pre>';
+
+echo '<br>';
+echo $out->getAvg($array);
