@@ -13,3 +13,16 @@ foreach ($cities as $city) {
     echo 'Город ' . $city->name . '<br>';
     echo 'Население ' . $city->population . '<br>';
 }
+
+
+
+$city14 = new City('city14', 200000);
+$city14->foundation = 1947 . ' year';
+$props = ['name', 'population', 'foundation'];
+
+echo '<br>---------------------------<br>';
+foreach ($props as $item) {
+    echo "$item : " . $city14->$item;
+    echo '<br>'; 
+}
+echo '---------------------------';

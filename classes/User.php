@@ -3,7 +3,9 @@
 class User
 {
     public $name;
+    public $surname;
     private $age;
+    public $patronymic;
 
     function __construct($name, $age)
     {

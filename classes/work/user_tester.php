@@ -43,3 +43,14 @@ echo 'Возраст массива ' . '<br>';
 foreach ($users as $user) {
     echo $user->name . ' ' . $user->getAge() . '<br>';
 }
+
+$props = ['name', 'surname', 'patronymic'];
+
+$user4 = new User('Ваня', 51);
+$user4->patronymic = 'Вячеславович';
+$user4->surname = 'Новый';
+
+echo '_________<br>';
+echo $user4->{$props[0]} . ' ';
+echo $user4->{$props[1]} . ' ';
+echo $user4->{$props[2]} . ' ';

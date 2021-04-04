@@ -4,6 +4,7 @@ class City
 {
     public $name;
     public $population; 
+    public $foundation;
 
     function __construct($name, $population)
     {
