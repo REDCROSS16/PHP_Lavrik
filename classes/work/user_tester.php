@@ -50,7 +50,44 @@ $user4 = new User('Ваня', 51);
 $user4->patronymic = 'Вячеславович';
 $user4->surname = 'Новый';
 
-echo '_________<br>';
+echo '<hr>';
 echo $user4->{$props[0]} . ' ';
 echo $user4->{$props[1]} . ' ';
 echo $user4->{$props[2]} . ' ';
+
+echo '<hr>';
+$arrayProps = [
+    'prop1' => 'surname',
+    'prop2' => 'name',
+    'prop3' => 'patronymic',
+];
+echo '<br> ассоциативный массив : ' . $user4->{$arrayProps['prop2']};
+
+function getProp() 
+{
+    return 'surname';
+}
+
+echo '<br> через функцию : ' . $user4->{getProp()};
+echo '<hr>';
+class Prop 
+{
+    public $value;
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+}
+
+$user5 = new User('Иванов', 25);
+$prop5 = new Prop('name');
+
+echo '<br> через свойство класса : ' . $user5->{$prop5->value};
+
+echo '<hr>';
+$methods = [
+    'method1' => 'getName',
+    'method2' => 'getAge',
+];
+echo '<br> 15.1 : ' . $user5->{$methods['method1']}() . ' ' . $user5->{$methods['method2']}();
