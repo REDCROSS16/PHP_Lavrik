@@ -24,12 +24,24 @@ class User
 
     public function setName ($name) {
         $this->name = $name;
+        return $this;
+    }
+
+    public function setSurname ($surname) {
+        $this->surname = $surname;
+        return $this;
+    }
+
+    public function setPatronymic ($patronymic) {
+        $this->patronymic = $patronymic;
+        return $this;
     }
 
     public function setAge ($age) {
         if ($this->isAgeCorrect($age)) {
             $this->age = $age;
         }
+        return $this;
     }
 
     public function addAge($years) {
@@ -39,7 +51,6 @@ class User
         }
     }
 
-    
 
     public function subAge($years) {
         $newAge = $this->age - $years;
@@ -53,13 +64,23 @@ class User
     }
 
     public function getAge() {
-        return $this->age;
+        return $this->age . ' year';
     }
 
     public function getName(){
         return $this->name;
     }
     
+    public function getFullInfo() 
+    {
+        echo $this->name . ' ' . $this->surname . ' ' . 
+            $this->patronymic . ' ' . $this->age . ' year';
+    }
+
+    public function getFIO() 
+    {
+        echo $this->name[0] . $this->surname[0] . $this->patronymic[0];
+    }
 }
 
 ?>

@@ -91,3 +91,10 @@ $methods = [
     'method2' => 'getAge',
 ];
 echo '<br> 15.1 : ' . $user5->{$methods['method1']}() . ' ' . $user5->{$methods['method2']}();
+
+echo '<hr>';
+$user17 = new User('Alex', 100);
+echo '17.3 ';
+echo $user17->setAge(28)->setName('Alexander')->setSurname('Podolnitsky')->setPatronymic('Vycheslavovich')->getFullInfo();
+echo '<br>17.3 ';
+echo $user17->getFIO();
