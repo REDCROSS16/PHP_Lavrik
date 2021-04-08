@@ -1,16 +1,17 @@
 <?php
 
+require_once 'User.php';
 /**
  * Класс работника
  *  */ 
 
-class Employee 
+class Employee extends User
 {
-    private $name;
+    public $name;
     private $age;
     private $salary;
-    private $surname;
-    private $patronymic;
+    public $surname;
+    public $patronymic;
 
     function __construct ($name, $age, $salary) {
         $this->name = $name;
@@ -18,15 +19,6 @@ class Employee
         $this->salary = $salary;
     }
 
-    public function getName() {
-        $name = $this->name;
-        return $name;
-    }
-
-    public function getAge() {
-        $age = $this->age;
-        return $age;
-    }
 
     public function getSalary() {
         $salary = $this->salary;
@@ -40,13 +32,7 @@ class Employee
             return false;
         }
     }
-    public function setName ($name) {
-        $this->name = $name;
-    }
-    public function setAge($age) {
-        if ($this->isAgeCorrect($age))
-        $this->age = $age;
-    }
+
     public function setSalary($salary) {
         $this->salary = $salary;
     }
@@ -56,9 +42,6 @@ class Employee
         return $dblSalary;
     }
     
-    private function isAgeCorrect($age) {
-        return $age > 20 && $age < 100;
-    }
 }
 
 ?>

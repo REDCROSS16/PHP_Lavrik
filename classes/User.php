@@ -81,6 +81,11 @@ class User
     {
         echo $this->name[0] . $this->surname[0] . $this->patronymic[0];
     }
+
+    public function getPatronimyc() {
+        return $this->patronymic;
+    }
+
 }
 
 ?>

@@ -1,10 +1,11 @@
 <?php 
 
-class Student 
+require 'User.php';
+
+class Student extends User
 {
     public $name;
     public $course;
-
 
     public function __construct($name)
     {
@@ -21,18 +22,13 @@ class Student
             $this->course++;
         } else {
             echo 'Учеба закончилась';
-        }
-        
-        
+        }    
     }
     
-    public function getName() {
-        return $this->name;
-    }
-
     public function getCourse() {
         return $this->course;
     }
 
 
 }
+
