@@ -13,8 +13,14 @@ class Student extends User
         $this->course = 1;
     }
 
-    public function getCourses($course) {
+    public function getCourses() {
+        return $this->course;
+    }
+    public function setCourse($course) {
         return $this->course = $course;
+    }
+    public function addOneYear() {
+        return $this->age++;
     }
 
     public function transetToNextCourse() {
