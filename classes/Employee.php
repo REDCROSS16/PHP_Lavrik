@@ -8,7 +8,7 @@ require_once 'User.php';
 class Employee extends User
 {
     public $name;
-    private $age;
+    protected $age;
     private $salary;
     public $surname;
     public $patronymic;

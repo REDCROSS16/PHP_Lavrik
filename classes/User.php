@@ -23,8 +23,13 @@ class User
     }
 
     public function setName ($name) {
-        $this->name = $name;
-        return $this;
+        if (strlen($name) > 3) {
+            $this->name = $name;
+            return $this;
+        } else {
+            echo 'неверное имя';
+        }
+        
     }
 
     public function setSurname ($surname) {
@@ -85,6 +90,7 @@ class User
     public function getPatronimyc() {
         return $this->patronymic;
     }
+
 
 }
 
