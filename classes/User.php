@@ -6,11 +6,13 @@ class User
     protected $surname;
     protected $age;
     protected $patronymic;
+    protected $birthday;
 
-    function __construct($name, $age)
+    function __construct($name, $surname, int $yearmontsday)
     {
         $this->name = $name;
-        $this->age = $age;
+        $this->surname = $surname;
+        $this->birthday = $yearmontsday; //19921216
     }
 
     public function show($str = 'nothing') {
@@ -22,19 +24,27 @@ class User
         echo $this->name . ' say hello!';
     }
 
-    public function setName ($name) {
-        if (strlen($name) > 3) {
-            $this->name = $name;
-            return $this;
-        } else {
-            echo 'неверное имя';
-        }
+    // public function setName ($name) {
+    //     if (strlen($name) > 3) {
+    //         $this->name = $name;
+    //         return $this;
+    //     } else {
+    //         echo 'неверное имя';
+    //     }
         
-    }
+    // }
 
-    public function setSurname ($surname) {
-        $this->surname = $surname;
-        return $this;
+    // public function setSurname ($surname) {
+    //     $this->surname = $surname;
+    //     return $this;
+    // }
+
+    public function getBirthday() {
+         $year = (int) substr($this->birthday,0, 4);
+         $month = (int) substr($this->birthday,4, 2);
+         $day = (int) substr($this->birthday,6, 2);
+         $date = [$year, $month, $day];
+         return $date;
     }
 
     public function setPatronymic ($patronymic) {
@@ -91,7 +101,14 @@ class User
         return $this->patronymic;
     }
 
-
+    public function calculateAge() {
+        // $this->getBirthday() ДОДЕЛАТЬ!!!
+    }
 }
+
+$a = new User('Alex', 'Podol', '19921216');
+
+
+print_r( $a->getBirthday());
 
 ?>

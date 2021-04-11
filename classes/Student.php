@@ -4,13 +4,12 @@ require 'User.php';
 
 class Student extends User
 {
-    public $name;
-    public $course;
+    private $course;
 
-    public function __construct($name)
-    {
-        $this->name = $name;
-        $this->course = 1;
+    public function __construct($name, $age, $course, $surname, $birthday)
+    {   
+        parent::__construct($name, $surname, $birthday);
+        $this->course = $course;
     }
 
     public function getCourses() {
@@ -35,6 +34,14 @@ class Student extends User
         return $this->course;
     }
 
+    // public function setName($name) {
+    //     if (parent::setName($name)  && strlen($name) < 10) {
+    //         $this->name = $name;
+    //         return $this;
+    //     } else {
+    //         echo 'неверное имя!';
+    //     }
+    // }
+
 
 }
-
