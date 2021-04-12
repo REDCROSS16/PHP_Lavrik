@@ -102,7 +102,9 @@ class User
     }
 
     public function calculateAge() {
-        // $this->getBirthday() ДОДЕЛАТЬ!!!
+        $data = $this->getBirthday();
+        date()
+
     }
 }
 
