@@ -4,15 +4,15 @@ class User
 {
     protected $name;
     protected $surname;
-    protected $age;
+    private $age;
     protected $patronymic;
     protected $birthday;
 
-    function __construct($name, $surname, int $yearmontsday)
+    function __construct($name, $surname, int $year_months_day)
     {
         $this->name = $name;
         $this->surname = $surname;
-        $this->birthday = $yearmontsday; //19921216
+        $this->age = $this->calculateAge($year_months_day); //19921216
     }
 
     public function show($str = 'nothing') {
@@ -24,27 +24,20 @@ class User
         echo $this->name . ' say hello!';
     }
 
-    // public function setName ($name) {
-    //     if (strlen($name) > 3) {
-    //         $this->name = $name;
-    //         return $this;
-    //     } else {
-    //         echo 'неверное имя';
-    //     }
+    /**
+     * Метод считает возраст пользователя
+     */
+    public function calculateAge($year_months_day) {
+        $y = (int)substr($year_months_day, 0, 4);
+        $m = (int)substr($year_months_day, 4, 2);
+        $d = (int)substr($year_months_day, 6, 2);
         
-    // }
+        if ($m > date('m') || $m == date('m') && $d > date('d')) {
+            return (date('Y') - $y - 1);
+        } else {
+            return (date('Y') - $y);
+        }
 
-    // public function setSurname ($surname) {
-    //     $this->surname = $surname;
-    //     return $this;
-    // }
-
-    public function getBirthday() {
-         $year = (int) substr($this->birthday,0, 4);
-         $month = (int) substr($this->birthday,4, 2);
-         $day = (int) substr($this->birthday,6, 2);
-         $date = [$year, $month, $day];
-         return $date;
     }
 
     public function setPatronymic ($patronymic) {
@@ -67,22 +60,26 @@ class User
     }
 
 
-    public function subAge($years) {
+    public function subAge($years) 
+    {
         $newAge = $this->age - $years;
         if ($this->isAgeCorrect($newAge)) {
             $this->age = $newAge;
         }
     }
 
-    private function isAgeCorrect($age) {
+    private function isAgeCorrect($age) 
+    {
         return $age >= 18 && $age <= 60;
     }
 
-    public function getAge() {
+    public function getAge() 
+    {
         return $this->age . ' year';
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
     
@@ -101,16 +98,11 @@ class User
         return $this->patronymic;
     }
 
-    public function calculateAge() {
-        $data = $this->getBirthday();
-        date()
-
-    }
 }
 
 $a = new User('Alex', 'Podol', '19921216');
 
-
-print_r( $a->getBirthday());
-
+echo $a->getAge();
 ?>
+
+
