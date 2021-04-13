@@ -13,9 +13,8 @@ class Employee extends User
     public $surname;
     public $patronymic;
 
-    function __construct ($name, $age, $salary) {
-        $this->name = $name;
-        $this->age = $age;
+    function __construct ($name, $surname, int $year_months_day, $salary) {
+        parent::__construct($name, $surname, $year_months_day); #конструктор родителя!!!!!!!!
         $this->salary = $salary;
     }
 
