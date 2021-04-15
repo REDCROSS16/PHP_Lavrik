@@ -31,10 +31,3 @@ class Driver extends Employee
     }
 
 }
-
-$car = new Driver('A', 20, 2000);
-echo    $car->setExperience(25)->getExperience();
-echo $car->getSalary();
-echo $car->getName();
-$car->setAge(50);
-echo $car->getAge();
