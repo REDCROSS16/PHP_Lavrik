@@ -15,6 +15,10 @@ class EmployeesCollection
         }
         return $sum;
     }
+
+    public function count() {
+        return count($this->employees);
+    }
 }
 
 $employeesCollection = new EmployeesCollection;
