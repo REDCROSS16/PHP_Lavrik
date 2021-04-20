@@ -48,20 +48,39 @@ foreach ($arr as $item) {
 }
 echo 'сумма зарплат: ' . $salary;
 echo '<hr>';
-$user1 = new User;
-$user2 = new User;
-$user3 = new User;
-$employee21 = new Employee2;
-$employee22 = new Employee2;
-$employee23 = new Employee2;
-$city1 = new City; 
-$city2 = new City; 
-$city3 = new City; 
+$user1 = new User('a', 'b');
+$user2 = new User('c', 'd');
+$user3 = new User('e', 'f');
+$employee21 = new Employee2('e1', 'e2', 1000);
+$employee22 = new Employee2('e3', 'e4', 5000);
+$employee23 = new Employee2('e5', 'e6', 10000);
+$city1 = new City('Vitebsk', 350000); 
+$city2 = new City('Gomel', 500000); 
+$city3 = new City('Minsk', 1000000); 
 
-$arr = [$use1, $user2, $user3, $employee21, $employee22, $employee23, $employee24, $city1, $city2, $city3 ];
+$arr = [$user1, $user2, $user3, $employee21, $employee22, $employee23, $employee24, $city1, $city2, $city3 ];
 
+echo 'Принадлежат классу USER<br>';
 foreach ($arr as $item) {
     if ($item instanceof User) {
-        
+        echo $item->name . ' ' .get_class($item) . '<br>' ;
     }
 }
+echo '<hr>';
+echo 'НЕ Принадлежат классу USER';
+foreach ($arr as $item) {
+    if (!($item instanceof User)) {
+        echo $item->name . ' ' .get_class($item) . '<br>' ;
+    }
+}
+echo '<hr>';
+echo 'Принадлежат только классу USER<br>';
+foreach ($arr as $item) {
+    if ($item instanceof Employee2) {
+        continue;
+    }
+    if ($item instanceof User) {
+        echo $item->name . ' ' .get_class($item) . '<br>' ;
+    }
+}
+echo '<hr>';
