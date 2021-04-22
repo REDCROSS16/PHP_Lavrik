@@ -4,6 +4,7 @@ class Employee
 {
     private $name;
     private $surname;
+    public $post;
 
     public function __construct($name, $surname, Post $post)
     {
@@ -24,6 +25,10 @@ class Employee
     }
     public function setSurname($surname){
         $this->surname = $surname;
+        return $this;
+    }
+    public function changePost(Post $post) {
+        $this->post = $post;
         return $this;
     }
 
