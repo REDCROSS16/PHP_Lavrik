@@ -54,3 +54,7 @@ echo class_exists(get_class($test));
 echo class_exists('Test2');
 echo '<hr>';
 echo 'есть ли класс ' . $_GET['class'].'? - ' . class_exists($_GET['class']);
+
+echo '<pre>';
+print_r( get_declared_classes());
+echo '</pre>';
