@@ -19,4 +19,14 @@ class Student5 extends User5
     {
         $this->schoolarship = $schoolarship;
     }
+
+    public function increaseRevenue($value)
+    {
+       $this->schoolarship = $this->schoolarship + $value;
+    }
+
+    public function decreaseRevenue($value)
+    {
+        $this->schoolarship = $this->schoolarship - $value;
+    }
 }
