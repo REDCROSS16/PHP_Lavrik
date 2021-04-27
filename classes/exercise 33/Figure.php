@@ -10,4 +10,8 @@ abstract class Figure
     {
         return $this->getSquare() / $this->getPerimeter();
     }
+
+    public function getSquarePerimeterSum() {
+        return $this->getPerimeter() + $this->getSquare();
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Figure.php';
+//namespace Figure;
 
 class Quadrate extends Figure
 {
@@ -28,3 +29,5 @@ $quadrate = new Quadrate(10,10);
 echo 'S: ' . $quadrate->getSquare() . ' P: ' . $quadrate->getPerimeter();
 
 echo '<br>' . $quadrate->getRatio();
+
+echo '<br>' . $quadrate->getSquarePerimeterSum();
