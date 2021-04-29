@@ -1,7 +1,7 @@
 <?php
 namespace exercise_34;
 
-class Rectangle implements \exercise_34\Figure
+class Rectangle implements  Figure
 {
     private $a;
     private $b;
