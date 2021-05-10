@@ -6,7 +6,4 @@ class Test
         Trait1::method insteadOf Trait2;
         Trait2::method as method2;
     }
-
-
-    
 }
