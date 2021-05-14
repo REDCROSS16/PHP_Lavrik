@@ -1,5 +1,7 @@
 <?php
 
+/*
+ * Класс для работы с датами*/
 class Date
 {
     private $date;
@@ -89,7 +91,7 @@ class Date
      * */
     public function addDay($value)
     {
-        return date('Y-m-d', $this->date + $value*24*60);
+        return date('Y-m-d',$this->date->getTimestamp()+$value*24*60*60);
 
     }
 
@@ -99,6 +101,7 @@ class Date
     public function subDay($value)
     {
 
+        return date('Y-m-d',$this->date->getTimestamp()-$value*24*60*60);
     }
 
     /*
@@ -106,7 +109,7 @@ class Date
      * */
     public function addMonth($value)
     {
-
+        return date('Y-m-d',$this->date->getTimestamp()+$value*30*24*60*60);
     }
 
     /*
@@ -114,21 +117,21 @@ class Date
      * */
     public function subMonth($value)
     {
-
+        return date('Y-m-d',$this->date->getTimestamp()-$value*30*24*60*60);
     }
     /*
     * добавляет значение $value к году
     * */
     public function addYear($value)
     {
-
+        return date('Y-m-d',$this->date->getTimestamp()+$value*12*30*24*60*60);
     }
     /*
         * отнимает значение $value от года
         * */
     public function subYear($value)
     {
-
+        return date('Y-M-d',$this->date->getTimestamp()-$value*12*30*24*60*60);
     }
 
     /**
@@ -138,7 +141,7 @@ class Date
      */
     public function format($format)
     {
-        //
+       return date($format, $this->date->getTimestamp());
     }
 
     /**
@@ -146,7 +149,7 @@ class Date
      */
     public function __toString() : string
     {
-
+        return $this->date->format('Y-m-D');
     }
 }
 
@@ -156,7 +159,17 @@ $date = new Date();
 echo $date->getDay();
 echo $date->getMonth('ru');
 echo $date->getYear();
+echo '<hr>';
 echo $date->getWeekDay();
 echo $date->getWeekDay('ru');
 echo $date->getWeekDay('en');
-echo $date->addDay(5);
+echo '<hr>';
+echo $date->addDay(10);
+echo '<hr>';
+echo $date;
+echo '<hr>';
+echo $date->subMonth(5);
+echo '<hr>';
+echo $date->subYear(4);
+echo '<hr>';
+echo $date->format('D-Y-M');
