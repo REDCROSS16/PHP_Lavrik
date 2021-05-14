@@ -1,5 +1,5 @@
 <?php
-require_once 'Sumhelper.php';
+require_once 'SumHelper.php';
 class Arr 
 {
     private $numbers = [];

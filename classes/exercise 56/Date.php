@@ -19,9 +19,9 @@ class Date
     /*
      * Получить день
      * */
-    public function getDay() : string
+    public function getDay()
     {
-        return 'Текущий день : ' . $this->date->format('d') . '<br>';
+        return $this->date->format('d');
     }
 
     /**
@@ -50,16 +50,16 @@ class Date
             return 'Месяц : ' . $enMonths[(int)$this->date->format('m')-1] . '<br>';
 
         } else {
-            return 'Месяц : ' . $this->date->format('m') . '<br>';
+            return $this->date->format('m');
         }
     }
 
     /*
      * Получить год
      * */
-    public function getYear() : string
+    public function getYear()
     {
-        return 'Год : ' .$this->date->format('Y') . '<br>';
+        return $this->date->format('Y');
     }
 
     /*
@@ -154,22 +154,22 @@ class Date
 }
 
 
-$date = new Date();
-
-echo $date->getDay();
-echo $date->getMonth('ru');
-echo $date->getYear();
-echo '<hr>';
-echo $date->getWeekDay();
-echo $date->getWeekDay('ru');
-echo $date->getWeekDay('en');
-echo '<hr>';
-echo $date->addDay(10);
-echo '<hr>';
-echo $date;
-echo '<hr>';
-echo $date->subMonth(5);
-echo '<hr>';
-echo $date->subYear(4);
-echo '<hr>';
-echo $date->format('D-Y-M');
+//$date = new Date();
+//
+//echo $date->getDay();
+//echo $date->getMonth('ru');
+//echo $date->getYear();
+//echo '<hr>';
+//echo $date->getWeekDay();
+//echo $date->getWeekDay('ru');
+//echo $date->getWeekDay('en');
+//echo '<hr>';
+//echo $date->addDay(10);
+//echo '<hr>';
+//echo $date;
+//echo '<hr>';
+//echo $date->subMonth(5);
+//echo '<hr>';
+//echo $date->subYear(4);
+//echo '<hr>';
+//echo $date->format('D-Y-M');
