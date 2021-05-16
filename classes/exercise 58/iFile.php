@@ -1,6 +1,7 @@
 <?php
 
 namespace exercise_58;
+
 interface iFile
 {
     public function __construct($filePath);
