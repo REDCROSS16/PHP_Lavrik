@@ -47,7 +47,7 @@ class File implements iFile
     Получить размер загруженного файла
      * */
     public function getSize() {
-
+        return  filesize($this->filePath);
     }
 
     public function replace($newPath)

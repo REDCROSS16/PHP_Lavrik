@@ -34,6 +34,9 @@ require_once 'File.php';
     echo 'dir of uploaded file : ' . $file->getDir();
     echo '<hr>';
     echo $file->getName();
+    echo '<hr>';
+    echo $file->getSize();
+
     ?>
 </body>
 </html>
