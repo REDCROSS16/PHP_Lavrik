@@ -36,7 +36,10 @@ require_once 'File.php';
     echo $file->getName();
     echo '<hr>';
     echo $file->getSize();
-
+    echo '<hr>';
+    echo  $file->getText();
+    echo '<hr>';
+    $file->setText('123123123123123');
     ?>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 namespace exercise_58;
+use mysql_xdevapi\Exception;
+
 require_once 'iFile.php';
 
 class File implements iFile
@@ -24,8 +26,7 @@ class File implements iFile
      * */
     public function getExt()
     {
-        $extension = pathinfo($this->filePath, PATHINFO_EXTENSION);
-        return $extension;
+        return pathinfo($this->filePath, PATHINFO_EXTENSION);
     }
 
     /*
@@ -43,12 +44,43 @@ class File implements iFile
     {
         return pathinfo($this->filePath, PATHINFO_FILENAME);
     }
+
     /*
     Получить размер загруженного файла
      * */
     public function getSize() {
         return  filesize($this->filePath);
     }
+
+    /*
+   Получить текст загруженного файла
+    * */
+    public function getText()
+    {
+        $extenstions = ['txt', 'doc', 'tmp'];
+        if (in_array($this->getExt(), $extenstions)) {
+
+            try {
+                return file_get_contents($this->filePath);
+            } catch (Exception $e) {
+                echo $e;
+                return false;
+            }
+        } else {
+            echo 'неподходящее расширение';
+            return false;
+        }
+    }
+
+    public function setText($text) : File
+    {
+        $file = $this->filePath;
+        file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
+        echo 'файл обновлен';
+        return $this;
+    }
+
+
 
     public function replace($newPath)
     {
@@ -66,19 +98,13 @@ class File implements iFile
         // TODO: Implement appendText() method.
     }
 
-    public function setText($text)
-    {
-        // TODO: Implement setText() method.
-    }
+
 
     public function rename($newName)
     {
         // TODO: Implement rename() method.
     }
-    public function getText()
-    {
-        // TODO: Implement getText() method.
-    }
+
     public function copy($copyPath)
     {
         // TODO: Implement copy() method.
