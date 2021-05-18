@@ -71,7 +71,7 @@ class File implements iFile
             return false;
         }
     }
-
+    // устанавливает текст файла
     public function setText($text) : File
     {
         $file = $this->filePath;
@@ -80,7 +80,11 @@ class File implements iFile
         return $this;
     }
 
-
+    // добавляет текст в конец файла
+    public function appendText($text)
+    {
+        // TODO: Implement appendText() method.
+    }
 
     public function replace($newPath)
     {
@@ -93,10 +97,7 @@ class File implements iFile
     {
         // TODO: Implement delete() method.
     }
-    public function appendText($text)
-    {
-        // TODO: Implement appendText() method.
-    }
+
 
 
 
