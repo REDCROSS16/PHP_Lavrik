@@ -74,7 +74,7 @@ class File implements iFile
     // устанавливает текст файла
     public function setText($text) : File
     {
-        $file = $this->filePath;
+        $file ='1.txt';
         file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
         echo 'файл обновлен';
         return $this;

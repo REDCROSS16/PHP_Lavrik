@@ -1,7 +1,35 @@
 <?php
 namespace exercise_58;
 require_once 'File.php';
+
+
+//print_r($_FILES);
+$file = new File($_FILES['userfile']['tmp_name']);
+//echo '<hr>';
+//echo 'extenstion of upload file : ' . $file->getExt();
+//echo '<hr>';
+//echo 'path of uploaded file : ' . $file->getPath();
+//echo '<hr>';
+//echo 'dir of uploaded file : ' . $file->getDir();
+//echo '<hr>';
+//echo $file->getName();
+//echo '<hr>';
+//echo $file->getSize();
+//echo '<hr>';
+//echo  $file->getText();
+//echo '<hr>';
+//$file->setText('123123123123123');
+
+
+
+//$text = $file->getText();
+//$file->setText('123');
+
+$file->setText( $_POST['textarea']);
 ?>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -21,26 +49,14 @@ require_once 'File.php';
         <input type="submit" value="отправить файл">
     </form>
 
+    <hr>
+    <form method="post">
+        <p>Добавить текст в файл: </p>
+        <textarea name="textarea" style="min-width: 500px; min-height: 500px"></textarea>
+        <input type="submit" value="добавить в файл">
+    </form>
 
-    <?php
 
-    print_r($_FILES);
-    $file = new File($_FILES['userfile']['tmp_name']);
-    echo '<hr>';
-    echo 'extenstion of upload file : ' . $file->getExt();
-    echo '<hr>';
-    echo 'path of uploaded file : ' . $file->getPath();
-    echo '<hr>';
-    echo 'dir of uploaded file : ' . $file->getDir();
-    echo '<hr>';
-    echo $file->getName();
-    echo '<hr>';
-    echo $file->getSize();
-    echo '<hr>';
-    echo  $file->getText();
-    echo '<hr>';
-    $file->setText('123123123123123');
-    ?>
 </body>
 </html>
 
