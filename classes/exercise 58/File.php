@@ -18,7 +18,7 @@ class File implements iFile
      * */
     public function getPath()
     {
-        return $this->filePath;
+        return pathinfo($this->filePath, PATHINFO_DIRNAME );
     }
 
     /*
@@ -74,8 +74,8 @@ class File implements iFile
     // устанавливает текст файла
     public function setText($text) : File
     {
-        $file = $this->setFile();
-        file_put_contents($file, $text, LOCK_EX);
+//        $file = $this->setFile();
+        file_put_contents($this->filePath, $text, LOCK_EX);
         return $this;
     }
 
