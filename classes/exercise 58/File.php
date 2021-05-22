@@ -22,7 +22,7 @@ class File implements iFile
     }
 
     /*
-    Получить расширение полученного файла
+    * Получить расширение полученного файла
      * */
     public function getExt()
     {
@@ -30,8 +30,8 @@ class File implements iFile
     }
 
     /*
-        Получить папку где хранится загруженный файл
-         * */
+    * Получить папку где хранится загруженный файл
+    * */
     public function getDir()
     {
         return pathinfo($this->filePath, PATHINFO_DIRNAME);
@@ -57,8 +57,8 @@ class File implements iFile
     * */
     public function getText()
     {
-        $extenstions = ['txt', 'doc', 'tmp'];
-        if (in_array($this->getExt(), $extenstions)) {
+        $extensions = ['txt', 'doc', 'tmp'];
+        if (in_array($this->getExt(), $extensions)) {
 
             try {
                 return file_get_contents($this->filePath);
@@ -74,17 +74,32 @@ class File implements iFile
     // устанавливает текст файла
     public function setText($text) : File
     {
-        $file ='1.txt';
-        file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
-        echo 'файл обновлен';
+        $file = $this->setFile();
+        file_put_contents($file, $text, LOCK_EX);
         return $this;
     }
 
-    // добавляет текст в конец файла
-    public function appendText($text)
-    {
-        // TODO: Implement appendText() method.
+    private function setFile($name = '1.txt') {
+        return $name;
     }
+
+    // добавляет текст в конец файла
+    public function appendText($text) : File
+    {
+        $file = $this->setFile();
+        file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
+        return $this;
+    }
+
+    /*
+     * копирует файл
+     * */
+    public function copy($copyPath)
+    {
+        $dir = $copyPath;
+    }
+
+
 
     public function replace($newPath)
     {
@@ -106,9 +121,6 @@ class File implements iFile
         // TODO: Implement rename() method.
     }
 
-    public function copy($copyPath)
-    {
-        // TODO: Implement copy() method.
-    }
+
 
 }

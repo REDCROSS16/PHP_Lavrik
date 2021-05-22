@@ -26,6 +26,7 @@ $file = new File($_FILES['userfile']['tmp_name']);
 //$file->setText('123');
 
 $file->setText( $_POST['textarea']);
+$file->copy('123');
 ?>
 
 
