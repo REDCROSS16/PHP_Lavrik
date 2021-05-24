@@ -1,6 +1,5 @@
 <?php
 namespace exercise_58;
-use mysql_xdevapi\Exception;
 
 require_once 'iFile.php';
 
@@ -74,20 +73,17 @@ class File implements iFile
     // устанавливает текст файла
     public function setText($text)
     {
-        $file = $this->filePath;
-        $current = file_get_contents($file);
-        $current .= "John Smith\n";
-//        file_put_contents($file, $current);
+        file_put_contents($this->getPath() . $this->getName(), $text);
     }
 
     private function setFile($name = '1.txt') {
         return $name;
     }
 
-    // добавляет текст в конец файла
+    // ГОВНО ЕБАНОЕ МЕТОД НЕ ТРОГАТЬ!!!
     public function appendText($text) : File
     {
-        $file = $this->setFile();
+        $file = $this->getPath() . DIRECTORY_SEPARATOR . $this->getName();
         file_put_contents($file, $text, FILE_APPEND | LOCK_EX);
         return $this;
     }
@@ -95,9 +91,10 @@ class File implements iFile
     /*
      * копирует файл
      * */
-    public function copy($copyPath)
+    public function copy($copyPath) : File
     {
-//        $dir = $copyPath;
+        move_uploaded_file($this->getPath(), $copyPath);
+        return $this;
     }
 
 

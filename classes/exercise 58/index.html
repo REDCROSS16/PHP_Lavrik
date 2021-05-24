@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>Испытание класса FILE</title>
+
 </head>
 <body>
     <div class="container">
@@ -19,9 +20,8 @@
             <div class="row">
                 <div class="one">
                     <form  enctype="multipart/form-data" method="POST">
-
                         <label for="file">Загрузите файл</label><input id="file" type="file" name="file">
-                            <input type="submit" value="отправить файл">
+                            <input type="submit"  value="отправить файл">
                     </form>
                 </div>
                 <div class="two">Имя файла: <span class="font"><?=$file->getName() .'.'. $file->getExt();?></span></div>
@@ -50,12 +50,13 @@
                 <div class="one">Текст файла</div>
                 <div class="two"><?=$file->getText();?></div>
             </div>
+<!--            Добавляет текст!!!! в файл!!!-->
             <div class="row">
-                <div class="one"><label for="replaceinset">Добавить текст</label></div>
+                <div class="one"><label for="replace">Добавить текст</label></div>
                 <div class="two">
-                    <form method="post">
-                        <textarea id='replaceinset' name="textarea" style="min-width: 200px; max-height: 30px"></textarea>
-                        <input type="submit" value="добавить в файл">
+                    <form method="post" action="work.php">
+                        <textarea id='replace' name="replace" style="min-width: 200px; max-height: 30px"></textarea>
+                        <input type="button" id="setText" value="добавить в файл">
                     </form>
                 </div>
             </div>
@@ -64,12 +65,19 @@
                 <div class="two">
                     <form method="post">
                         <textarea id='appendtext' name="textarea" style="min-width: 200px; max-height: 30px"></textarea>
-                        <input type="submit" value="добавить в файл">
+                        <input type="button" value="добавить в файл">
                     </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="one"><p>Копировать файл</p></div>
+                <div class="two">
+                    <button id="copy">Копировать</button>
                 </div>
             </div>
 
         </div>
     </div>
+    <script src="js.js"></script>
 </body>
 </html>
