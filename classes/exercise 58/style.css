@@ -40,7 +40,7 @@ h3 {
 
 
 .font {
-    font-style: italic;
+    border-bottom: 2px dashed lightblue;
     font-weight: 600;
     color: yellow;
 }

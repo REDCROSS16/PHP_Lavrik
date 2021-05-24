@@ -18,7 +18,7 @@ class File implements iFile
      * */
     public function getPath()
     {
-        return pathinfo($this->filePath, PATHINFO_DIRNAME );
+        return $this->filePath;
     }
 
     /*
@@ -72,11 +72,12 @@ class File implements iFile
         }
     }
     // устанавливает текст файла
-    public function setText($text) : File
+    public function setText($text)
     {
-//        $file = $this->setFile();
-        file_put_contents($this->filePath, $text, LOCK_EX);
-        return $this;
+        $file = $this->filePath;
+        $current = file_get_contents($file);
+        $current .= "John Smith\n";
+//        file_put_contents($file, $current);
     }
 
     private function setFile($name = '1.txt') {
@@ -96,7 +97,7 @@ class File implements iFile
      * */
     public function copy($copyPath)
     {
-        $dir = $copyPath;
+//        $dir = $copyPath;
     }
 
 
@@ -110,7 +111,7 @@ class File implements iFile
 
     public function delete()
     {
-        // TODO: Implement delete() method.
+        unlink($this->filePath);
     }
 
 
