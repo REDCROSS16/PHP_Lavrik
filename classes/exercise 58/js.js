@@ -1,29 +1,53 @@
-console.log('123')
 
 
-// let copy = document.querySelector('#copy');
-// console.log(copy);
+
+let button = document.getElementById('addText');
+//отменяем загрузку
+button.addEventListener('click', function (e){
+    e.preventDefault();
+    let data = document.querySelector('#replace').value;
+
+    let formData = new FormData();
+    formData.append('replace', data);
+    let promise = fetch('five/classes/exercise_58/work.php', {
+        method: 'POST',
+        body: formData
+    });
+    promise.then(
+
+        response => {
+            return response.text();
+        }
+    ).then(
+        text => {
+            // alert('work!');
+            // result.innerHTML = text;
+        }
+    )
+
+});
+
+
+// var url = '/your/url?x=hello';
 //
-// copy.addEventListener('click', function () {
-//     let promise = fetch('work.php?copy=tmp');
-//     promise.then(
-//         response => {
-//             alert('готово!!')
-//             return response.text();
-//         }
-//     );
-// })
-
-
-// let setText = document.querySelector("#setText");
-// setText.addEventListener('click',  function () {
-//     console.log('work')
-//     let promise = fetch('work.php/?replace' + setText.value,{
-//         method: 'POST',
+// fetch(url)
+//     .then(function (response) {
+//         return response.text();
+//     })
+//     .then(function (body) {
+//         console.log(body);
 //     });
-//     promise.then(
-//         response => {
-//             return response.text();
-//         }
-//     )
-// })
+//
+// If you want to $_POST['x'], you need to send the data as FormData:
+//
+//     var url = '/your/url';
+// var formData = new FormData();
+// formData.append('x', 'hello');
+//
+// fetch(url, { method: 'POST', body: formData })
+//     .then(function (response) {
+//         return response.text();
+//     })
+//     .then(function (body) {
+//         console.log(body);
+//     });

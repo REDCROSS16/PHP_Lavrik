@@ -11,8 +11,7 @@ $tmpFile = $_FILES['file']['tmp_name'];
 move_uploaded_file($tmpFile, $destination);
 
 $file = new File($destination);
-
-
+echo $_POST['replace'];
 
 
 //if (isset($_POST['replace'])) {
@@ -23,15 +22,16 @@ $file = new File($destination);
 //if (isset($_POST['copy'])) {
 //    $file->copy($_POST['copy']);
 //}
-
+//if (isset($_GET['replace'])) {
+//    $text = $_GET['replace'];
+//    echo $text;
+////    $file->setText($text);
+//}
 
 require_once 'index.html';
 
-if (isset($_POST['replace'])) {
-    $text = $_POST['replace'];
-    echo $text;
-    $file->setText($text);
-}
+
+
 
 
 
