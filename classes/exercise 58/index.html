@@ -55,7 +55,7 @@
                 <div class="one"><label for="replace">Добавить текст</label></div>
                 <div class="two">
                     <form method="post" action="">
-                        <textarea id='replace' name="replace" style="min-width: 200px; max-height: 30px"></textarea>
+                        <input id='replace' name="replace" value="<?php if(isset($_REQUEST['user'])) echo $_REQUEST['user'];?>"></input>
                         <input type="submit" id="addText" value="добавить в файл">
                     </form>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="one"><label for="appendtext">Добавить текст в конец файла</label></div>
                 <div class="two">
                     <form method="post">
-                        <textarea id='appendtext' name="textarea" style="min-width: 200px; max-height: 30px"></textarea>
+                        <input id='appendtext' name="textarea"></input>
                         <input type="button" value="добавить в файл">
                     </form>
                 </div>
