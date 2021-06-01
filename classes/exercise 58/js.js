@@ -7,8 +7,6 @@ form.addEventListener('submit', function (e) {
 
     let replace = document.querySelector('#replace').value;
 
-    console.log(replace);
-
     let promise = fetch('text.php?replace=' + replace);
 
     promise.then(
@@ -18,18 +16,5 @@ form.addEventListener('submit', function (e) {
     }).then (
         text => {
             console.log(text);
-            alert(text);
     })
-
-    // promise.then(
-    //     response => {
-    //         return response.text();
-    //     }).then (
-    //     text => {
-    //         document.querySelector('#result').innerHTML = '<b>' + text + '</b>';
-    //     }
-    // )
-
-
-
 })

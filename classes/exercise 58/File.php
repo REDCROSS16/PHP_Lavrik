@@ -73,12 +73,15 @@ class File implements iFile
     // устанавливает текст файла
     public function setText($text)
     {
-        file_put_contents($this->getPath() . $this->getName(), $text);
+        $file = $this->getPath();
+        if (is_file($file)) {
+            file_put_contents($file, $text);
+        }
     }
 
-    private function setFile($name = '1.txt') {
-        return $name;
-    }
+//    private function setFile($name = '1.txt') {
+//        return $name;
+//    }
 
     // ГОВНО ЕБАНОЕ МЕТОД НЕ ТРОГАТЬ!!!
     public function appendText($text) : File

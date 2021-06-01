@@ -13,7 +13,13 @@ move_uploaded_file($tmpFile, $destination);
 
 $file = new File($destination);
 
+
 if (isset($_GET['replace'])) {
-    $text = $_GET['replace'];
-    $file->setText($text);
+    echo $file->getPath();
+//    file_put_contents($file->, 123);
 }
+
+
+//echo $file->getPath();
+
+
