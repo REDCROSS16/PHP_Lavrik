@@ -7,17 +7,22 @@ require_once 'File.php';
 $fileName = basename($_FILES['file']['name']);
 $destination = __DIR__ . '/spool' . DIRECTORY_SEPARATOR . $fileName;
 
-$tmpFile = $_FILES['file']['tmp_name'];
+if (!$fileName == '') {
+    $tmpFile = $_FILES['file']['tmp_name'];
 
-move_uploaded_file($tmpFile, $destination);
+    move_uploaded_file($tmpFile, $destination);
+    $file = new File($destination);
 
-$file = new File($destination);
-
-
-if (isset($_GET['replace'])) {
-    echo $file->getPath();
-//    file_put_contents($file->, 123);
+    if (isset($_GET['replace'])) {
+        echo $file->getPath();
+    file_put_contents($file->getPath(), 123);
+    }
 }
+
+
+
+
+
 
 
 //echo $file->getPath();
