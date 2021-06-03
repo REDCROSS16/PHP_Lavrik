@@ -5,7 +5,7 @@ class User
     protected $name;
     protected $surname;
     private $age;
-    protected $patronymic;
+    public $patronymic;
     protected $birthday;
 
     function __construct($name, $surname, int $year_months_day)
