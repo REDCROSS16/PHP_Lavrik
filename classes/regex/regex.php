@@ -26,3 +26,24 @@ echo preg_replace('#x.x#', '!!!', $str2);
 $str3 = 'xx xax xaax xaaax xbx';
 echo '<br>' . $str3 . '<br>';
 echo preg_replace('#xa+x#','+', $str3);
+
+//Для этого существуют группирующие скобки '(' и ')':
+
+$str4 = 'xabx xababx xaabbx';
+echo '<br>';
+echo $str4;
+echo '<br>';
+echo preg_replace('#x(ab)+x#', '*', $str4);
+
+$str5 = 'a+x ax aax aaax';
+echo '<br>';
+echo $str5;
+echo '<br>';
+
+// \ - экранирует спецсимволы!!! \+ \-
+echo preg_replace('#a\+x#', '!', $str5); # экранирован +
+echo preg_replace('(a\+x)', '!', $str5); # экранирован +
+
+$url = 'href="www.vk.com"';
+
+echo preg_replace('#a&b#', '!', 'a&b');
