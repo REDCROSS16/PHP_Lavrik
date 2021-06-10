@@ -78,3 +78,5 @@ echo preg_replace('#[^d]xx#', '!', 'axx bxx ^xx dxx'); # НЕ ЦИФРА ХХ
 
 echo '<hr>';
 echo preg_replace('#[.a]+xx#', '!', '.xx ..xx .a.xx bxx');
+
+echo 'reg_lesson_3';
