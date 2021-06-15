@@ -2,4 +2,30 @@ RewriteEngine On
 RewriteBase /
 
 Redirect /index.php /test.php
-Redirect /index.php http://site.ru
+#Redirect /index.php http://site.ru
+
+#Redirect /index.php /test.php
+#Redirect /index1.php /test1.php
+#Redirect /index2.php /test2.php
+#Redirect /index3.php /test3.php
+#Redirect /index.php http://site.com
+
+RewriteEngine On
+RewriteBase /
+#RewriteRule ^test\.php index.php
+#RewriteRule ^dir/ index.php
+
+#Выполните редирект всех запросов к папке dir1 на страницу index1.php, всех запросов к папке dir2 на страницу index2.php. .
+#RewriteRule ^dir1/ index1.php
+#RewriteRule ^dir2/ index2.php
+
+#Выполните редирект всех файлов, заканчивающихся на .html, на страницу index.php.
+#RewriteRule .html$ index.php
+
+#Выполните редирект всех файлов, заканчивающихся на .php, на страницу index.php.
+#RewriteRule .php$ index.php
+
+#Выполните редирект всех файлов, заканчивающихся на .html или .php, на страницу index.php.
+#RewriteRule .(html|php)$ index.php
+
+#Выполните редирект всех файлов, заканчивающихся на .html на такие же файлы, но с расширением .php.
