@@ -1,8 +1,13 @@
-RewriteEngine On
-RewriteBase /
-
-Redirect /index.php /test.php
-#Redirect /index.php http://site.ru
+#<IfModule dir_module>
+#    DirectoryIndex index.php index.html
+#</IfModule>
+#AddDefaultCharset UTF-8
+#AddCharset UTF-8 .html
+#<FilesMatch "\.(html)$">
+#   Header set Cache-Control: "no-cache, no-store"
+#   Header unset ETag
+#</FilesMatch>
+#Header set X-Content-Type-Options nosniff
 
 #Redirect /index.php /test.php
 #Redirect /index1.php /test1.php
@@ -29,3 +34,55 @@ RewriteBase /
 #RewriteRule .(html|php)$ index.php
 
 #Выполните редирект всех файлов, заканчивающихся на .html на такие же файлы, но с расширением .php.
+#RewriteRule (.*).html$ $1.php
+
+#Выполните редирект всех запросов к вашему сайту на такие же запросы, но на сайте http://site.com.
+#RewriteRule (.*)\.(.*) http://site.com/$1.$2
+
+#Выполните редирект страницы index1.php на страницу 1.php, страницы index2.php на страницу 2.php,
+#страницы index3.php на страницу 3.php. Решите задачу с помощью одной директивы RedirectMatch.
+#RedirectMatch index(.*).php $1.php ?????
+
+#Выполните редирект всех запросов, которые содержат в адресе /dir/, на страницу index.php.
+#RewriteRule ^dir/ index.php
+
+#Выполните редирект всех запросов, которые содержат в адресе текст dir, на страницу index.php.
+#RewriteRule (dir) index.php
+
+#Выполните редирект всех запросов, которые заканчиваются на /dir/, на страницу index.php.
+#RewriteRule dir/$ index.php
+
+#Выполните редирект всех страниц вида test0.php на index.php. Вместо 0 может быть любая цифра.
+#RewriteRule test(\d)?\.php index.php
+
+#Выполните редирект всех страниц вида test0.php на index.php. Вместо 0 может быть любое число.
+#RewriteRule test(\d)+\.php index.php
+
+#Выполните редирект всех страниц содержащих /0/ на index.php. Вместо 0 может быть любое число.
+#RewriteRule \d/ index.php
+
+#Выполните редирект всех страниц, кроме страницы test.php, на index.php.
+#RewriteRule !test\.php index.php
+
+#Выполните редирект всех файлов, НЕ заканчивающихся на .html, на index.php.
+#RewriteRule !(.*)\.html index.php
+
+#Выполните редирект всех запросов, НЕ начинающихся на /webroot/ на страницу index.php.
+#RewriteRule !^webroot/ index.php
+
+#RewriteCond %{REQUEST_URI} \.php$
+#RewriteCond %{REQUEST_URI} ^/dir/
+#RewriteRule .+ index.php
+
+#Выполните редирект всех файлов, заканчивающихся на .html, на index.php.
+#RewriteCond %{REQUEST_URI} \.html$
+#RewriteRule .+ index.php
+
+#Выполните редирект всех файлов, НЕ заканчивающихся на .html, на index.php.
+#RewriteCond %{REQUEST_URI} !\.html$
+#RewriteRule .+ index.php
+
+#Выполните редирект всех файлов, имеющих расширение .html и адрес которых начинается с /content/, на index.php.
+#RewriteCond %{REQUEST_URI} \.html$
+#RewriteCond %{REQUEST_URI} ^/content/
+#RewriteRule .+ index.php
