@@ -86,3 +86,65 @@ RewriteBase /
 #RewriteCond %{REQUEST_URI} \.html$
 #RewriteCond %{REQUEST_URI} ^/content/
 #RewriteRule .+ index.php
+
+
+#Выполните редирект всех файлов, имеющих расширение .html ИЛИ расширение .php, на index.php.
+#RewriteCond %{REQUEST_URI} \.html$ [OR]
+#RewriteCond %{REQUEST_URI} \.php$
+#RewriteRule .+ index.php
+
+#Выполните редирект всех файлов, имеющих расширение .css ИЛИ путь к которым начинается с /styles/, на index.php.
+#RewriteCond %{REQUEST_URI} \.css$ [OR]
+#RewriteCond %{REQUEST_URI} ^/styles/
+#RewriteRule .+ index.php
+
+#RewriteCond %{REQUEST_FILENAME} -f #файлик
+#RewriteCond %{REQUEST_FILENAME} -d #папка
+#RewriteCond %{REQUEST_FILENAME} -s #ненулевой файлик
+#RewriteCond %{REQUEST_FILENAME} !-f #не существующий файлик
+#RewriteCond %{REQUEST_FILENAME} !-d #не существующая папка
+#
+##Выполните редирект всех запросов, являющихся существующими файлами, на index.php.
+#RewriteCond %{REQUEST_FILENAME} -f #файлик
+#RewriteRule .+ index.php
+#
+##Выполните редирект всех запросов, НЕ являющихся существующими файлами, на index.php.
+#RewriteCond %{REQUEST_FILENAME} !-f #файлик
+#RewriteRule .+ index.php
+#
+##Выполните редирект всех запросов, НЕ являющихся существующими папками, на index.php.
+#RewriteCond %{REQUEST_FILENAME} !-d #файлик
+#RewriteRule .+ index.php
+#
+##Выполните редирект всех запросов, являющихся существующими файлами и имеющим расширение .html, на index.php.
+#RewriteCond %{REQUEST_FILENAME} -f #файлик
+#RewriteCond %{REQUEST_URI} \.html$
+#RewriteRule .+ index.php
+#
+##Выполните редирект всех запросов, НЕ являющихся существующими файлами и папками, на index.php.
+#RewriteCond %{REQUEST_FILENAME} !-d #файлик
+#RewriteCond %{REQUEST_FILENAME} !-f #файлик
+#RewriteRule .+ index.php
+
+#RewriteCond %{REQUEST_URI} \.html$ [L] - ФЛАГ L останавливает выполнение
+#RewriteRule (.+) index.php?get=$1
+
+#Выполните редирект всех запросов, положив запрошенный адрес в карман и передав GET-параметром, на страницу index.php.
+#RewriteRule (.+) index.php?get=$1
+
+#Выполните редирект всех запросов на index.php, положив запрошенный адрес в карман и передав GET-параметром в index.php.
+#RewriteCond %{REQUEST_URI} !^/index\.php$
+#RewriteRule (.+) index.php?get=$1
+
+#RewriteCond %{REQUEST_URI} !^/index\.php$
+#RewriteRule (.+) index.php?get=%1 - % из RewriteCond $1 RewriteRule
+
+#Выполните редирект запроса test.php на index.php. Сделайте так, чтобы адрес зарпоса можно было набрать в любом регистре.
+#RewriteCond %{REQUEST_URI} !^/index\.php$
+#RewriteRule (.+) index.php?get=%1
+
+#Сделайте так, чтобы в случае 404 ошибки, пользователю показывался файл 404.php.
+#ErrorDocument 404 /404.php
+
+#Дана папка test. Закройте прямой доступ к этой папке.
+deny from all
