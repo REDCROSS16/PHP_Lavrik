@@ -42,10 +42,23 @@
 //Пусть в корне вашего сайта лежат файлы 1.txt, 2.txt и 3.txt. Вручную сделайте массив с именами этих файлов.
 //Переберите его циклом, прочитайте содержимое каждого из файлов,
 //слейте его в одну строку и запишите в новый файл new.txt. Изначально этого файла не должно быть.
-$arr = ['1.txt', '2.txt', '3.txt'];
-$result = '';
-foreach ($arr as $file) {
-    $result .= file_get_contents($file);
-}
+//$arr = ['1.txt', '2.txt', '3.txt'];
+//$result = '';
+//foreach ($arr as $file) {
+//    $result .= file_get_contents($file);
+//}
+//
+//echo $result;
 
-echo $result;
+//Пусть в корне вашего сайта лежат файлы 1.txt, 2.txt и 3.txt.
+//Вручную сделайте массив с именами этих файлов. Переберите его циклом и в
+//текст каждого файла в конец запишите восклицательный знак.
+//$arr = ['1.txt', '2.txt', '3.txt'];
+//foreach ($arr as $file) {
+//    file_put_contents($file, '!', FILE_APPEND);
+//    echo file_get_contents($file);
+//}
+
+//Пусть в корне вашего сайта лежит файл old.txt. Переименуйте его на new.txt.
+//rename('old.txt', 'new.txt');
+
