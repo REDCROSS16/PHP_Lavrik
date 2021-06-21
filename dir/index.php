@@ -123,3 +123,26 @@
 //if (file_exists('test.txt')) {
 //    echo filesize('test.txt') / (1024 * 1024);
 //}
+
+//Положите в корень вашего сайта какой-нибудь фильм размером более гигабайта.
+//Узнайте размер этого файла и переведите его в гигабайты.
+
+//Дан файл test.txt. Прочитайте его текст, получите массив его строк.
+//$content = file_get_contents('test.txt');
+//$text = explode(PHP_EOL, $content);
+//echo '<pre>';
+//print_r ($text);
+//echo '</pre>';
+
+
+//Дан файл test.txt. В нем на каждой строке написано какое-то число. Найдите сумму этих чисел и запишите ее в файл sum.txt.
+//$file = file_get_contents('test.txt');
+//$number = explode(PHP_EOL, $file);
+//echo array_sum($number);
+
+//Дан массив. Запишите элементы этого массива в файл test.txt так, чтобы каждый элемент начинался с новой строки.
+//$arr = [1,2,3,4,5,6];
+//foreach ($arr as $item) {
+//    file_put_contents('test.txt', $item . PHP_EOL, FILE_APPEND);
+//}
+//echo file_get_contents('test.txt');
