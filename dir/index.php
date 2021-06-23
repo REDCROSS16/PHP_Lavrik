@@ -153,6 +153,36 @@
 
 //Дан файл test.txt. В нем на каждой строке написано какое-то число.
 // С помощью функции file найдите сумму этих чисел и запишите эту сумму обратно в конец файла, с новой строки.
-$result = array_sum(file('test.txt'));
-file_put_contents('test.txt', $result. PHP_EOL, FILE_APPEND);
-echo file_get_contents('test.txt');
+//$result = array_sum(file('test.txt'));
+//file_put_contents('test.txt', $result. PHP_EOL, FILE_APPEND);
+//echo file_get_contents('test.txt');
+
+
+//Создайте в корне вашего сайта папку с названием dir.
+//mkdir('dir3');
+
+//Дан массив со строками. Создайте в корне вашего сайта папки, названиями которых служат элементы этого массива
+//$arr = ['первая', 'вторая', 'третья'];
+//foreach ($arr as $dir) {
+//    mkdir($dir);
+//}
+
+//Создайте в корне вашего сайта папку с названием test. Затем создайте в этой папке 3 файла: 1.txt, 2.txt, 3.txt.
+//mkdir('test');
+//$files = ['1.txt', '2.txt', '3.txt'];
+//foreach ($files as $file) {
+//    file_put_contents('test/' . $file, '');
+//}
+
+//Удалите папку с названием dir.
+
+//$scanDir = scandir('dir');
+//print_r($scanDir);
+//
+//foreach ($scanDir as $file ) {
+//    if (is_file('dir/' . $file)) {
+//        unlink('dir/' . $file);
+//    }
+//}
+//rmdir('dir');
+
