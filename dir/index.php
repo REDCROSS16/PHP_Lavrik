@@ -146,3 +146,13 @@
 //    file_put_contents('test.txt', $item . PHP_EOL, FILE_APPEND);
 //}
 //echo file_get_contents('test.txt');
+
+//Дан файл test.txt. В нем на каждой строке написано какое-то число.
+//С помощью функции file найдите сумму этих чисел и выведете ее на экран.
+//echo array_sum(file('test.txt'));
+
+//Дан файл test.txt. В нем на каждой строке написано какое-то число.
+// С помощью функции file найдите сумму этих чисел и запишите эту сумму обратно в конец файла, с новой строки.
+$result = array_sum(file('test.txt'));
+file_put_contents('test.txt', $result. PHP_EOL, FILE_APPEND);
+echo file_get_contents('test.txt');
