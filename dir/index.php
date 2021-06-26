@@ -218,3 +218,71 @@
 //        echo file_get_contents('test/' . $file) . '<br>';
 //    }
 //}
+
+
+//Пусть дан путь к файлу. Проверьте, файл это или папка.
+//var_dump( 'test file: ', is_file('test'));
+//var_dump('count.txt file: ', is_file('count.txt'));
+
+//Пусть в корне вашего сайта лежит папка dir, а в ней какие-то
+//файлы и подпапки. Выведите на экран столбец имен подпапок из папки dir.
+//$dir = scandir('test');
+//foreach ( $dir as $file) {
+//    if (is_file('test/' . $file)) echo $file;
+//}
+
+//Пусть в корне вашего сайта лежит папка dir, а в ней какие-то файлы и подпапки.
+//Выведите на экран столбец имен файлов из папки dir.
+//$dir = scandir('test');
+//foreach ( $dir as $file) {
+//    if (is_file('test/' . $file)) echo $file;
+//}
+
+//41 Пусть в корне вашего сайта лежит папка dir, а в ней какие-то текстовые файлы и подпапки.
+//В подпапках в свою очередь также могут быть текстовые файлы и подпапки. Рекурсивно пройдитесь
+//по всем вложенным папкам и выведите в браузер пути ко всем текстовым файлам.
+
+//function getFiles ($path) {
+//    $result = [];
+//    $dir = array_diff(scandir($path), ['.', '..']);
+//
+//    foreach ( $dir as $file) {
+//        $fullPath = $path . '/' . $file;
+//
+//        if (is_dir($fullPath)) {
+//            $result = array_merge($result, getFiles($fullPath));
+//        } else {
+//            $result[] = $fullPath;
+//        }
+//    }
+//    return $result;
+//}
+//echo '<pre>';
+//print_r(getFiles('test'));
+//echo '</pre>';
+
+//42 Пусть в корне вашего сайта лежит папка dir с текстовыми файлами и подпапками.
+//Рекурсивно пройдитесь по всем вложенным папкам и в конец каждого текстового файла
+//запишите восклицательный знак.
+//$files = getFiles('test');
+//foreach ($files as $file) {
+//    file_put_contents($file, '1000', FILE_APPEND);
+//}
+
+
+//Пусть в корне вашего сайта лежит папка dir с текстовыми файлами
+//и подпапками. Удалите папку dir вместе с ее содержимым.
+//function removeDir ($dir) {
+//    $files = array_diff(scandir($dir), ['.', '..']);
+//    foreach ($files as $file) {
+//        $path = $dir . '/' . $file;
+//        if (is_dir($path)) {
+//            removeDir($path);
+//        } else {
+//            unlink($path);
+//        }
+//    }
+//    rmdir($dir);
+//}
+//
+//removeDir('dir2');
