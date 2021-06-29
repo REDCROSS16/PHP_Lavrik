@@ -76,10 +76,28 @@ session_start();
 //5. Запишите в сессию время захода пользователя на сайт.
 //При обновлении страницы выводите сколько секунд назад пользователь зашел на сайт.
 
-if (!isset($_SESSION['time'])) {
-    $_SESSION['end'] = time();
-    $_SESSION['start'] = time();
-}  else {
-    echo time() - $_SESSION['start'] . ' секунд вы провели на сайте';
+//if (!isset($_SESSION['time'])) {
+//    $_SESSION['end'] = time();
+//    $_SESSION['start'] = time();
+//}  else {
+//    echo time() - $_SESSION['start'] . ' секунд вы провели на сайте';
+//}
+
+//6. Спросите у пользователя email с помощью формы.
+//Затем сделайте так, чтобы в другой форме (поля: имя, фамилия, пароль, email)
+//при ее открытии поле email было автоматически заполнено.
+if (isset($_REQUEST['submit'])) {
+    $_SESSION['name'] = $_REQUEST['name'];
+    $_SESSION['surname'] = $_REQUEST['surname'];
+    $_SESSION['email'] = $_REQUEST['email'];
 }
+if (isset($_SESSION['email'])) echo $_SESSION['email'];
+?>
+<?php echo makeLink('test.php', 'test');?>
+<form action="">
+    <label for="email">name<input type="text" name="name"></label>
+    <label for="email">surname<input type="text" name="surname"></label>
+    <label for="email">email<input type="text" name="email"></label>
+    <input type="submit" name="submit">
+</form>
 
