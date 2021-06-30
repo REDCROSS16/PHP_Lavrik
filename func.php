@@ -1,10 +1,12 @@
 <?php
 
 
-function nextRow() {
+function nextRow() : string
+{
     return '<br>';
 }
 
-function makeLink($path, $text) {
+function makeLink($path, $text) : string
+{
     return '<a href=' . $path . '>' . $text . '<a>';
 }
