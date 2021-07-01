@@ -52,6 +52,12 @@ $worker1 = [
     'salary' => 1000
 ];
 
+$worker4 = [
+    'name' => 'Джон',
+    'age' => 20,
+    'salary' => 700
+];
+
 //$columns = ['name', 'age', 'birthday'];
 //$values = ['alex', 28, '19921216']; # YYYYMMDD
 
@@ -59,10 +65,17 @@ $worker1 = [
 //$values = 'Alex';
 
 //$query = insert($table, $columns, $values);
-//$query = insert2($table_workers, $worker1);
+$query = insert2($table_workers, $worker4);
 
 if (mysqli_query($db, $query)){
     echo '<br> добавлено';
 } else {
     die( mysqli_error($db) );
+}
+
+
+# удаляем с БД универсальный удалятель
+function delete($table, $condition, $value) : string
+{
+    return "DELETE FROM $table WHERE {$condition}={$value}";
 }
