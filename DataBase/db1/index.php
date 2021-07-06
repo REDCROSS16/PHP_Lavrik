@@ -5,6 +5,10 @@ $password = 'root';
 $db_name = 'test_16';
 $db = mysqli_connect($host, $user, $password, $db_name);
 ?>
+
+<head>
+
+</head>
 <table>
     <tr>
         <th>id</th>
@@ -31,5 +35,7 @@ $db = mysqli_connect($host, $user, $password, $db_name);
     ?>
 
 </table>
+<script src="../node_modules/oojs/dist/oojs.js"></script>
+<script src="app.js"></script>
 
 
