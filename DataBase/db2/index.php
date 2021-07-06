@@ -6,10 +6,14 @@ if (isset($_GET['del'])) {
     header('Location: index.php');
 }
 
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $age = $_POST['age'];
+    $salary = $_POST['salary'];
+    insertWorker($name, $age, $salary);
+}
 
-//$_POST['name']
-//$_POST['age']
-//$_POST['salary']
+$maxId = maxId();
 ?>
 
 <head>
@@ -17,6 +21,9 @@ if (isset($_GET['del'])) {
 
 </head>
 <button  type="button" class="btn btn-dark"><a href="addWorker.php" style="color:white;text-decoration: none">Добавить работника</a></button>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 <table class="table table-striped" style="width: 60%">
     <tr>
         <th scope="col">id</th>

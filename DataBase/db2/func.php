@@ -28,3 +28,24 @@ function deleteWorker($id)
 
     return true;
 }
+
+function insertWorker ($name, $age, $salary)
+{
+    $db = connect();
+    $query = "INSERT INTO workers SET name='$name',age=$age,salary=$salary";
+
+    try {
+        mysqli_query($db, $query);
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
+
+function maxId()
+{
+    $db = connect();
+    $query = "SELECT MAX(id) FROM workers";
+    $result = mysqli_query($db, $query);
+    for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+    return $data[0]['MAX(id)'];
+}
