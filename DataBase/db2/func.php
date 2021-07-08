@@ -49,3 +49,8 @@ function maxId()
     for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
     return $data[0]['MAX(id)'];
 }
+
+function input()
+{
+    return '123';
+}
