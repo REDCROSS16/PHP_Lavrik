@@ -50,7 +50,13 @@ function maxId()
     return $data[0]['MAX(id)'];
 }
 
-function input()
+function input($name)
 {
-    return '123';
+    if (isset($_POST[$name])) {
+        $value = $_POST[$name];
+    } else {
+        $value = '';
+    }
+
+    return '<input name="' . $name . '" value=' . $name .'>';
 }
