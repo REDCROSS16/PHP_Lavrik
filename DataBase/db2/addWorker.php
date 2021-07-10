@@ -8,6 +8,7 @@
 
 
 <form action="index.php" method="post">
+    <label for="">Заполните поля</label>
     <?=input('name');?>
     <?=input('age');?>
     <?=input('salary');?>
