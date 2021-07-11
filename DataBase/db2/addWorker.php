@@ -14,3 +14,5 @@
     <?=input('salary');?>
     <input type="submit" value="ADD" name="submit">
 </form>
+
+echo 123;
