@@ -1,3 +1,13 @@
+<style>
+    a.active {
+        text-decoration: none;
+        color: goldenrod;
+    }
+    a {
+        text-decoration: none !important;
+        color: black;
+    }
+</style>
 <?php
 require_once 'config.php';
 require_once 'func.php';
@@ -14,6 +24,21 @@ if (isset($_POST['submit'])) {
 }
 
 $maxId = maxId();
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+$notesOnPage = 5;
+$from = ($page - 1 ) * $notesOnPage;
+
+$query = "SELECT * FROM workers LIMIT $from, $notesOnPage";
+$data = select($query);
+
+
+
 ?>
 
 <head>
@@ -32,11 +57,8 @@ $maxId = maxId();
         <th scope="col">salary</th>
         <th scope="col">Option</th>
     </tr>
+
     <?php
-
-    $query = "SELECT * FROM workers";
-
-    $data = select($query);
     $result = '';
 
     foreach ($data as $item ) {
@@ -53,6 +75,34 @@ $maxId = maxId();
     ?>
 
 </table>
+<?php
+ $query = "SELECT COUNT(*) as count FROM workers";
+ $count = select($query);
+ $pages = ceil($count[0]['count'] / $notesOnPage);
+if ($page > 1) {
+    $previousPage = $page - 1;
+    echo "<a href='?page=$previousPage'><<</a>";
+} else {
+    echo "<a href='#' disabled><<</a>";
+}
+
+ for ($i=1; $i <= $pages; $i++) {
+     if ($page == $i) {
+         echo '<a href="?page=' . $i . '" class="active">' . $i . '</a> ';
+     } else {
+         echo '<a href="?page=' . $i . '">' . $i . '</a> ';
+     }
+
+ }
+
+ if ($page < $pages) {
+     $nextPage = $page + 1;
+     echo "<a href='?page=$nextPage'>>></a>";
+ } else {
+     echo "<a href='#' disabled>>></a>";
+ }
+
+?>
 <script src="app.js"></script>
 
 
