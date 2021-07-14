@@ -76,6 +76,7 @@ $data = select($query);
 
 </table>
 <?php
+# создание пагинации
  $query = "SELECT COUNT(*) as count FROM workers";
  $count = select($query);
  $pages = ceil($count[0]['count'] / $notesOnPage);
@@ -94,15 +95,13 @@ if ($page > 1) {
      }
 
  }
-
+# пагинация
  if ($page < $pages) {
      $nextPage = $page + 1;
      echo "<a href='?page=$nextPage'>>></a>";
  } else {
      echo "<a href='#' disabled>>></a>";
  }
-
 ?>
-<script src="app.js"></script>
 
 
