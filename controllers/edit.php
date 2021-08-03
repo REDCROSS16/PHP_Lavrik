@@ -9,7 +9,7 @@ $pageTitle = 'EDIT';
 if (isset($_POST['update'])) {
     $fields = extractFields($_POST, ['name', 'text']);
     if (updateMessage($id, $fields))  {
-        header('Location: index.php');
+        header('Location: index2.php');
     } else {
         echo 'error';
     }

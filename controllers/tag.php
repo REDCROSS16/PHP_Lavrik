@@ -24,7 +24,7 @@ $pageContent = template('base/v_con2col', [
 
 if (isset($_POST['tag'])) {
     if (addTags($_POST['tag'], $id)) {
-        header('Location: index.php?c=tag&id=' . $id);  
+        header('Location: index2.php?c=tag&id=' . $id);
     }
 
 }

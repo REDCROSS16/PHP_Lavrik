@@ -8,7 +8,7 @@ $title = 'ADD MESSAGE';
 
 		if (empty($validateErrors)) { #если $validateErrors не пустой то выполнится ветвление
 			messagesAdd($fields);
-			header('Location: index.php');
+			header('Location: index2.php');
 			exit();
 		}
 	} else {
