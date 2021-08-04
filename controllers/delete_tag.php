@@ -5,7 +5,7 @@
 
 // if (isset($_GET)) {
 //     deleteTagFromMessage($id);
-//     header('Location: index2.php?c=message&id='. $id);
+//     header('Location: index.php?c=message&id='. $id);
 //     exit();
 // }
 
