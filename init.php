@@ -12,4 +12,4 @@ const DB_USER = 'root';
 const DB_PASS = 'root';
 
 
-const BASE_URL = '/five/';
+const BASE_URL = 'Lavrik/five/';
